@@ -1,0 +1,50 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100px;
+    padding: 0 40px;
+
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0)90%);
+
+
+    .header_wrap {
+        display: flex;
+        align-items: center;
+        gap: 60px;
+
+        h1 {
+            img {
+                width: 80px;
+                filter: invert(1);
+            }
+        }
+
+    }
+
+    .gnb {
+        &>ul {
+            display: flex;
+            gap: 30px;
+
+            &>li {
+                a {
+                    display: block;
+                    text-transform: uppercase;
+                    color: #fff;
+                }
+            }
+        }
+    }
+
+    .user_area {
+        display: flex;
+        gap: 20px;
+    }
+}

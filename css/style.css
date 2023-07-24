@@ -1,0 +1,439 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Roboto:wght@100;300;400;500;700;900&display=swap");
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css");
+@import url("https://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css");
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  box-sizing: border-box;
+  color: inherit;
+}
+
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  line-height: 1;
+}
+
+img {
+  vertical-align: middle;
+  max-width: 100%;
+}
+
+address,
+em,
+i {
+  font-style: normal;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+body {
+  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  letter-spacing: -0.0025em;
+  word-break: keep-all;
+}
+
+.inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.blind {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+}
+
+.title {
+  max-width: 1440px;
+  margin: 32px auto;
+  padding: 0 15px;
+}
+.title h2 {
+  font-size: 40px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-indent: -2px;
+}
+@media (max-width: 768px) {
+  .title h2 {
+    font-size: 40px;
+  }
+}
+
+p {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 300;
+}
+
+.back::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  height: 130px;
+  -webkit-clip-path: polygon(0 0, 100% 0%, 100% 70%, 0% 100%);
+          clip-path: polygon(0 0, 100% 0%, 100% 70%, 0% 100%);
+  background: #222;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100px;
+  padding: 0 40px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 90%);
+}
+.header .header_wrap {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+.header .header_wrap h1 img {
+  width: 80px;
+  filter: invert(1);
+}
+.header .gnb > ul {
+  display: flex;
+  gap: 30px;
+}
+.header .gnb > ul > li a {
+  display: block;
+  text-transform: uppercase;
+  color: #fff;
+}
+.header .user_area {
+  display: flex;
+  gap: 20px;
+}
+
+.main_visual {
+  position: relative;
+}
+.main_visual .itm {
+  position: relative;
+  z-index: 990;
+}
+.main_visual .itm::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  width: 900px;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+}
+.main_visual .itm01 {
+  height: 100vh;
+  background: url(../images/mainVisual03.jpg) no-repeat left center/cover;
+}
+.main_visual .itm02 {
+  height: 100vh;
+  background: url(../images/mainVisual02.jpg) no-repeat center center/cover;
+}
+.main_visual .itm03 {
+  height: 100vh;
+  background: url(../images/mainVisual04.jpg) no-repeat left center/cover;
+}
+.main_visual .slogan {
+  position: absolute;
+  bottom: 300px;
+  left: 185px;
+  text-transform: uppercase;
+}
+.main_visual .slogan h3 {
+  font-size: 52px;
+  font-weight: 700;
+  text-indent: -2px;
+  width: 680px;
+  margin: 0 0 14px 0;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+.main_visual .slogan p {
+  font-size: 16px;
+  line-height: 20px;
+  margin: 0 0 32px 0;
+  color: #e5e5e5;
+  word-break: keep-all;
+}
+.main_visual .slogan a {
+  display: inline-block;
+  padding: 10px 25px 9px 25px;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+}
+.main_visual .arrows {
+  position: absolute;
+  left: 180px;
+  top: 50%;
+  transform: translate(0, -50%);
+  z-index: 999;
+}
+.main_visual .arrows i {
+  font-size: 16px;
+  color: #fff;
+  cursor: pointer;
+}
+.main_visual .arrows .left {
+  position: absolute;
+  bottom: 60px;
+  left: 0;
+}
+.main_visual .arrows .right {
+  position: absolute;
+  bottom: 60px;
+  left: 70px;
+}
+
+.main_news .title {
+  text-align: right;
+}
+.main_news .content {
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  gap: 10px;
+}
+.main_news .content .big_con {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border: 1px solid #f2f2f2;
+}
+.main_news .content .big_con > * {
+  height: 270px;
+}
+.main_news .content .big_con .img_box {
+  overflow: hidden;
+}
+.main_news .content .big_con .img_box img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: 0.5s;
+}
+.main_news .content .big_con .img_box:hover img {
+  transform: scale(1.1);
+}
+.main_news .content .big_con .desc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 30px;
+  word-break: keep-all;
+  background: #f7f8f9;
+}
+.main_news .content .big_con .desc strong {
+  display: block;
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0 0 16px 0;
+}
+.main_news .content .big_con .desc p {
+  font-size: 15px;
+  line-height: 20px;
+  margin: 0 0 32px 0;
+}
+.main_news .content .big_con .desc:nth-child(3) {
+  text-align: right;
+}
+.main_news .content .snews_slide {
+  border: 1px solid #f2f2f2;
+  width: 100%;
+}
+.main_news .content .snews_slide .desc {
+  display: flex;
+  flex-direction: column;
+  height: 190px;
+  padding: 24px 26px 16px 26px;
+  background: #f7f8f9;
+}
+.main_news .content .snews_slide .desc strong {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 14px 0;
+}
+.main_news .content .snews_slide .desc p {
+  font-size: 15px;
+  line-height: 20px;
+  margin: 0 0 auto 0;
+}
+.main_news .content .snews_slide .desc a {
+  display: block;
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  padding: 8px;
+}
+.main_news .content .snews_slide .news_arrow {
+  position: absolute;
+  bottom: 190px;
+  right: 0;
+  z-index: 2;
+  display: flex;
+}
+.main_news .content .snews_slide .news_arrow i {
+  display: block;
+  padding: 10px;
+  background: #f7f8f9;
+  cursor: pointer;
+}
+.main_news .content .snews_slide .news_arrow .nleft {
+  border-right: 1px solid #f2f2f2;
+}
+
+.main_motorcycle {
+  position: relative;
+}
+.main_motorcycle::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 40%;
+  background: url(../images/mainVisual01.jpg) no-repeat 75% center/cover;
+  box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
+}/*# sourceMappingURL=style.css.map */
