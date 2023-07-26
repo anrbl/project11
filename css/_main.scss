@@ -1,6 +1,11 @@
 .main_visual {
     position: relative;
 
+    .swiper {
+        width: 100%;
+        height: 100%;
+    }
+
     .itm {
         position: relative;
         z-index: 990;
@@ -46,7 +51,7 @@
             text-indent: -2px;
             width: 680px;
             margin: 0 0 14px 0;
-            color: #fff;
+            color: $c-w;
             text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         }
 
@@ -54,14 +59,14 @@
             font-size: 16px;
             line-height: 20px;
             margin: 0 0 32px 0;
-            color: #e5e5e5;
+            color: $c-gb ;
             word-break: keep-all;
         }
 
         a {
             display: inline-block;
             padding: 10px 25px 9px 25px;
-            color: #fff;
+            color: $c-w;
             border: 1px solid rgba(255, 255, 255, 0.5);
             border-radius: 8px;
         }
@@ -70,31 +75,102 @@
 
     .arrows {
         position: absolute;
-        left: 180px;
-        top: 50%;
-        transform: translate(0, -50%);
+        left: 177px;
+        bottom: 550px;
         z-index: 999;
 
         i {
+            padding: 5px;
             font-size: 16px;
-            color: #fff;
+            color: $c-w;
             cursor: pointer;
         }
 
         .left {
             position: absolute;
-            bottom: 60px;
+            bottom: 0;
             left: 0;
         }
 
+
         .right {
             position: absolute;
-            bottom: 60px;
-            left: 70px;
+            bottom: 0;
+            left: 35px;
         }
+    }
+
+    .scroll {
+        position: absolute;
+        bottom: 300px;
+        left: 80px;
+        z-index: 999;
+        user-select: none;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: -110px;
+            left: 50%;
+            transform: translate(-50%, 0);
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: $c-wb;
+
+            animation: scr 3s infinite;
+        }
+
+        @keyframes scr {
+            0% {
+                transform: translate(-50%, 0);
+                opacity: 0%;
+
+            }
+
+            70% {
+
+                transform: translate(-50%, 67px);
+                opacity: 100%;
+            }
+
+            100% {
+                transform: translate(-50%, 0);
+                opacity: 0%;
+            }
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: -122px;
+            left: 50%;
+            transform: translate(-50%, 0);
+            width: 28px;
+            height: 100px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+
+        }
+
+        span {
+            font-size: 12px;
+            font-weight: 300;
+            text-transform: uppercase;
+            color: $c-g;
+
+            writing-mode: vertical-lr;
+            letter-spacing: 5px;
+        }
+
     }
 }
 
+@media (max-width:768px) {
+    .main_visual {
+        height: 500px;
+    }
+}
 
 .main_news {
     .title {
@@ -102,23 +178,45 @@
     }
 
     .content {
+        padding: 120px 0 0 0;
+    }
+
+    .board {
         display: grid;
         grid-template-columns: 1fr 350px;
         gap: 10px;
 
-        .big_con {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            border: 1px solid #f2f2f2;
+        .news_left {
+            display: block;
 
             &>* {
-                height: 270px;
+                height: 300px;
+            }
+
+            .news_box {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .nl {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+
+                .img_box {
+                    order: 2;
+                }
+
+                .desc {
+                    text-align: right;
+                    order: 1;
+                }
             }
 
             .img_box {
                 overflow: hidden;
 
                 img {
+                    filter: grayscale(0.3);
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
@@ -138,7 +236,7 @@
                 justify-content: center;
                 padding: 0 30px;
                 word-break: keep-all;
-                background: #f7f8f9;
+                background: $c-wb;
 
                 strong {
                     display: block;
@@ -153,22 +251,35 @@
                     margin: 0 0 32px 0;
                 }
 
-                &:nth-child(3) {
-                    text-align: right;
+                a {
+                    display: block;
+
+                    &>span {
+                        position: relative;
+                        font-weight: 700;
+
+                        &::after {
+                            content: " \e90b";
+                            font-family: xeicon;
+                            vertical-align: -1px;
+                            font-weight: 400;
+
+                        }
+                    }
                 }
             }
         }
 
-        .snews_slide {
-            border: 1px solid #f2f2f2;
+        .news_slide {
+            border: 1px solid $c-line;
             width: 100%;
 
             .desc {
                 display: flex;
                 flex-direction: column;
-                height: 190px;
-                padding: 24px 26px 16px 26px;
-                background: #f7f8f9;
+                height: 250px;
+                padding: 24px 26px 24px 26px;
+                background: $c-wb;
 
                 strong {
                     font-size: 20px;
@@ -192,7 +303,7 @@
 
             .news_arrow {
                 position: absolute;
-                bottom: 190px;
+                bottom: 250px;
                 right: 0;
 
                 z-index: 2;
@@ -202,12 +313,12 @@
                 i {
                     display: block;
                     padding: 10px;
-                    background: #f7f8f9;
+                    background: $c-wb;
                     cursor: pointer;
                 }
 
                 .nleft {
-                    border-right: 1px solid #f2f2f2;
+                    border-right: 1px solid $c-line;
                 }
             }
         }
@@ -216,15 +327,226 @@
 
 .main_motorcycle {
     position: relative;
+    background: $c-wb;
 
-    &::before {
-        content: "";
+    .motor_left {
         position: absolute;
         top: 0;
         left: 0;
         bottom: 0;
-        width: 40%;
-        background: url(../images/mainVisual01.jpg)no-repeat 75% center/cover;
+        width: 700px;
+        z-index: 990;
+        background: url(../images/BG02.jpg)no-repeat fixed right top/cover;
         box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
+        transition: 0.5s 0.7s;
+
+
+
+        .tit {
+            position: absolute;
+            bottom: 130px;
+            left: 50%;
+            transform: translate(-50%, 0);
+            width: calc(100% - 150px);
+            text-align: right;
+            color: $c-w;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+
+            span {
+                display: inline-block;
+                font-size: 20px;
+                font-weight: 300;
+                margin: 0 0 8px 0;
+                text-indent: -2px;
+            }
+
+            h3 {
+                font-size: 56px;
+                line-height: 60px;
+                font-weight: 800;
+            }
+        }
+    }
+
+    &.active {
+        .motor_left {
+            left: 0;
+            transition: 0.5s 0.3s;
+        }
+    }
+
+
+
+    .motor_slide {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 5;
+        width: calc(100% - 700px);
+        height: 100%;
+        padding: 100px 50px 70px 50px;
+        background: $c-wb;
+
+        .swiper-wrapper {
+            margin: 0 0 16px 0;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            height: calc((100% - 30px) / 2) !important;
+        }
+
+        .product {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            background: $c-w;
+        }
+
+        .txt {
+            padding: 30px 20px;
+
+            strong {
+                display: block;
+                font-size: 22px;
+                font-weight: 600;
+                margin: 0 0 8px 0;
+            }
+
+            p {
+                font-size: 14px;
+                font-weight: 300;
+                margin: 0 0 24px 0;
+            }
+
+            span {
+                font-size: 16px;
+                font-weight: 500;
+            }
+
+            a {
+                display: inline-block;
+                padding: 7px 20px 6px 20px;
+                font-size: 14px;
+                border: 1px solid rgba(0, 0, 0, 0.3);
+                border-radius: 5px;
+            }
+        }
+
+        .dots {
+            text-align: center;
+
+            .swiper-pagination-bullet-active {
+                background: $c-main ;
+            }
+        }
+    }
+}
+
+.main_collection {
+
+    .content {
+        padding: 180px 0;
+    }
+
+    .slogan {
+        position: relative;
+        z-index: 2;
+        height: 250px;
+        border-radius: 8px;
+        overflow: hidden;
+        background: url(../images/BG03.jpg) no-repeat left center/cover;
+        margin: 0 0 48px 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 40px;
+
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 0 0 0 0;
+            z-index: -1;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.7) 10%, rgba(0, 0, 0, 0) 70%);
+        }
+
+        .txt {
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 22px;
+            color: $c-w;
+        }
+    }
+
+
+    .col_best {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 16px;
+        height: 100%;
+
+        li {
+            background: $c-wb;
+            border-radius: 8px;
+            box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+
+            .img_box {
+                overflow: hidden;
+            }
+
+            .desc {
+                position: relative;
+                padding: 30px;
+
+                &::before {
+                    content: "120TH ANNIVERSARY";
+                    display: block;
+                    margin: 0 0 8px 0;
+                    font-size: 14px;
+                    font-weight: 500;
+                    color: $c-sub;
+                }
+
+                strong {
+                    display: block;
+                    font-size: 18px;
+                    line-height: 24px;
+                    font-weight: 700;
+                    margin: 0 0 24px 0;
+                }
+
+                .price {
+                    font-size: 15px;
+                }
+            }
+        }
+
+        .more {
+            padding: 30px;
+            background: $c-main;
+
+            a {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                height: 100%;
+            }
+
+            strong {
+                display: block;
+                font-size: 28px;
+                font-weight: 700;
+                text-indent: -2px;
+                margin: 0 0 16px 0;
+                color: $c-w;
+            }
+
+            p {
+                margin: 0 0 auto 0;
+                color: $c-w;
+            }
+        }
     }
 }

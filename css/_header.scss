@@ -11,7 +11,7 @@
     height: 100px;
     padding: 0 40px;
 
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0)90%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 90%);
 
 
     .header_wrap {
@@ -37,14 +37,134 @@
                 a {
                     display: block;
                     text-transform: uppercase;
-                    color: #fff;
+                    color: $c-g;
+                }
+
+                &:hover {
+                    a {
+                        color: $c-w;
+                    }
                 }
             }
         }
     }
 
     .user_area {
-        display: flex;
-        gap: 20px;
+        position: relative;
+
+        i {
+            position: relative;
+
+            &::before {
+                content: "\e91c";
+                font-family: xeicon;
+                display: block;
+                font-size: 24px;
+                color: $c-w;
+                padding: 5px;
+                cursor: pointer;
+            }
+
+            &.on {
+                &::before {
+                    content: "\e921";
+                    font-family: xeicon;
+                }
+            }
+        }
+
+        .user_nav {
+            position: absolute;
+            top: 0;
+            right: 60px;
+
+            display: none;
+            transition: 0.5s;
+
+            &>li {
+                text-align: right;
+
+                a {
+                    display: block;
+                    white-space: nowrap;
+                    color: $c-g;
+
+                    span {
+                        line-height: 40px;
+                    }
+                }
+
+                &:hover {
+                    a {
+                        color: $c-w;
+                    }
+                }
+            }
+
+            &.on {
+                display: flex;
+                gap: 30px;
+            }
+        }
+
+    }
+
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        transform: translate(0, -100%);
+        z-index: -1;
+        height: 110px;
+        clip-path: polygon(0 0, 100% 0%, 100% 90%, 0% 100%);
+        background: $c-2;
+        transition: 0.7s;
+    }
+
+
+    &.on {
+        background: rgba(0, 0, 0, 0);
+
+        &::before {
+            transform: translate(0, 0);
+        }
+    }
+}
+
+
+@media (max-width:768px) {
+    .header {
+        z-index: 1001;
+        background: $c-w;
+        padding: 0;
+        display: block;
+
+        .header_wrap {
+            h1 {
+                position: fixed;
+                top: 30px;
+                left: 30px;
+
+                img {
+                    width: 50px;
+                    filter: invert(0);
+                }
+            }
+        }
+
+        .gnb {
+            display: none;
+        }
+
+        .user_area {
+            display: none;
+        }
+
+        &::before {
+            display: none;
+        }
     }
 }

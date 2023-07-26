@@ -23,26 +23,11 @@ body {
     overflow: hidden;
 }
 
-.title {
-    max-width: 1440px;
-    margin: 32px auto;
-    padding: 0 15px;
 
-
-    h2 {
-        font-size: 40px;
-        font-weight: 700;
-        text-transform: uppercase;
-        text-indent: -2px;
-
-    }
-
-
-    @media (max-width:768px) {
-        h2 {
-            font-size: 40px;
-        }
-    }
+h2 {
+    font-size: 40px;
+    font-weight: 700;
+    text-transform: uppercase;
 }
 
 p {
@@ -51,16 +36,51 @@ p {
     font-weight: 300;
 }
 
-.back {
-    &::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: -1;
-        height: 130px;
-        clip-path: polygon(0 0, 100% 0%, 100% 70%, 0% 100%);
-        background: #222;
+.title {
+    text-align: right;
+    margin: 0 0 32px 0;
+
+
+
+    h3 {
+        position: relative;
+        font-size: 56px;
+        font-weight: 800;
+        text-transform: uppercase;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translate(0, -50%);
+            width: 40%;
+            height: 5px;
+            background: #fa6600;
+        }
     }
+
+    strong {
+        display: block;
+        font-size: 20px;
+    }
+}
+
+
+.btn2w {
+    display: block;
+    font-size: 14px;
+    padding: 10px 20px 8px 20px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: $c-line;
+}
+
+.btn2b {
+    display: block;
+    font-size: 14px;
+    padding: 10px 20px 8px 20px;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    color: $c-2;
 }
