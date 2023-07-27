@@ -12,30 +12,33 @@ $(function () {
 
         navigation: false,
         css3: false,
-        responsiveWidth: 768,
+        responsiveWidth: 700,
+        responsiveHeight: 800,
         scrollOverflow: true,
-        easing: 'easeInOutCubic',
-        easingCss3: 'cubic-bezier(0.785, 0.135, 0.15, 0.86)',
-
         afterLoad: function (lnk, idx) {
             $('.side_nav li').eq(idx - 1).addClass('on').siblings().removeClass('on');
         },
         onLeave: function (idx, nidx, dir) {
             console.log(idx, nidx, dir);
-            if (nidx == '2') {
-                $('.header').addClass('on')
-                $('.side_nav').removeClass('on')
-            } else if (nidx == '1') {
+            if (nidx == '1') {
                 $('.header').removeClass('on')
+                $('.side_scroll').removeClass('on')
+                $('.side_nav').removeClass('on')
+            } else if (nidx == '2') {
+                $('.header').addClass('on')
+                $('.side_scroll').addClass('on')
+                $('.side_nav').addClass('on')
+            } else if (nidx == '3') {
+                $('.header').removeClass('on')
+                $('.side_scroll').removeClass('on')
                 $('.side_nav').addClass('on')
             } else if (nidx == '4') {
                 $('.header').addClass('on')
-                $('.side_nav').removeClass('on')
-            } else if (nidx == '5') {
-                $('.header').addClass('on')
+                $('.side_scroll').addClass('on')
                 $('.side_nav').addClass('on')
             } else {
-                $('.header').removeClass('on')
+                $('.header').addClass('on')
+                $('.side_scroll').removeClass('on')
                 $('.side_nav').removeClass('on')
             };
 
@@ -44,14 +47,24 @@ $(function () {
         },
     });
 
+    // $(window).resize(function () {
+    //     if ($(window).width() < 768) {
+    //         $.fn.fullpage.destroy('all');
+    //     } else {
+    //         $.fpActivate();
+
+    //     }
+    // })
+
     const MainSlide = new Swiper('.main_slide', {
+        parallax: true,
+        speed: 1000,
         loop: true,
         autoplay: {
             delay: 4500,
             disableOnInteraction: false,
         },
         grabCursor: true,
-        effect: "fade",
         navigation: {
             nextEl: '.arrows .right',
             prevEl: '.arrows .left',
@@ -71,16 +84,48 @@ $(function () {
 
 
     const MotorSlide = new Swiper('.motor_slide', {
-        slidesPerView: 3,
+
+        loop: true,
+        slidesPerView: 1,
         grid: {
-            rows: 2,
+            rows: 1,
         },
-        spaceBetween: 30,
+        spaceBetween: 24,
         pagination: {
             el: ".main_motorcycle .dots",
             clickable: true,
         },
+        breakpoints: {
+            // when window width is >= 768px
+            768: {
+
+                loop: false,
+                slidesPerView: 3,
+                spaceBetween: 30,
+                grid: {
+                    rows: 2,
+                },
+            }
+        }
     })
 
 
+    //반응형
+    $(window).on('scroll', function () {
+        let sct = $(window).scrollTop();
+        sct > 10 ? $('.header').addClass('mobile_on') : $('.header').removeClass('mobile_on');
+    })
+    $('.mmenu').on('click', function () {
+        $(this).toggleClass('on');
+        $('.gnb').toggleClass('on');
+    })
+    $(window).on('resize', function () {
+        $('.mmenu').removeClass('mobile_on');
+        $('.gnb').removeClass('mobile_on');
+    });
+    $('.gnb').on('wheel mousemove mousedown click', function (e) {
+        if ($(this).hasClass('on')) {
+            e.preventDefault();
+        }
+    });
 });

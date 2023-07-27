@@ -5,13 +5,15 @@
     right: 0;
     z-index: 1000;
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 100px;
-    padding: 0 40px;
+    .content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 100px;
+        padding: 0 40px;
 
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 90%);
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 90%);
+    }
 
 
     .header_wrap {
@@ -38,6 +40,7 @@
                     display: block;
                     text-transform: uppercase;
                     color: $c-g;
+                    white-space: nowrap;
                 }
 
                 &:hover {
@@ -134,19 +137,31 @@
     }
 }
 
-
+//일반 헤더 ---768
 @media (max-width:768px) {
     .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
         z-index: 1001;
-        background: $c-w;
-        padding: 0;
-        display: block;
+
+        .content {
+            display: block;
+            padding: 0;
+            background: $c-w;
+            border-bottom: 1px solid $c-line;
+            transition: 0.5s;
+        }
 
         .header_wrap {
             h1 {
                 position: fixed;
                 top: 30px;
-                left: 30px;
+                left: 24px;
+                z-index: 1000;
+
+                transition: 0.5s;
 
                 img {
                     width: 50px;
@@ -156,7 +171,49 @@
         }
 
         .gnb {
-            display: none;
+            position: absolute;
+            top: 0;
+            left: 100%;
+            right: 0;
+            z-index: 980;
+            height: 100vh;
+            background: $c-w;
+            transition: 0.5s;
+
+            &>ul {
+                flex-direction: column;
+                padding: 150px 0 0 30px;
+
+                &>li {
+                    position: relative;
+
+                    a {
+                        color: $c-4;
+                    }
+
+                    &:hover {
+                        a {
+                            color: inherit;
+                        }
+                    }
+
+                    &:not(:first-child) {
+                        &::before {
+                            content: "";
+                            position: absolute;
+                            top: -15px;
+                            left: 0;
+                            width: 70%;
+                            height: 1px;
+                            background: $c-g;
+                        }
+                    }
+                }
+            }
+
+            &.on {
+                left: 0;
+            }
         }
 
         .user_area {
@@ -165,6 +222,186 @@
 
         &::before {
             display: none;
+        }
+
+        &.on {
+            background: none;
+
+            &::before {
+                display: none;
+            }
+        }
+
+        .mmenu {
+            display: none;
+        }
+    }
+}
+
+//모바일 메뉴 ---768
+@media (max-width:768px) {
+    .header {
+        .mmenu {
+            display: block;
+
+            position: fixed;
+            top: 32px;
+            right: 24px;
+            z-index: 1001;
+            width: 35px;
+            height: 35px;
+            transition: 0.5s;
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: 9px;
+                left: 7px;
+                right: 7px;
+                height: 2px;
+                background: $c-2;
+
+
+                opacity: 1;
+                visibility: visible;
+                transition: 0.5s;
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                bottom: 9px;
+                left: 7px;
+                right: 7px;
+                height: 2px;
+                background: $c-2;
+
+                opacity: 1;
+                visibility: visible;
+                transition: 0.5s;
+            }
+
+            &>i {
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    left: 7px;
+                    right: 7px;
+                    height: 2px;
+                    background: $c-2;
+                    transform: translate(0, -50%);
+                    transition: 0.5s;
+                }
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    left: 7px;
+                    right: 7px;
+                    height: 2px;
+                    background: $c-2;
+                    transform: translate(0, -50%);
+                    transition: 0.5s;
+                }
+            }
+
+
+            &.on {
+                background: $c-g;
+                border-radius: 50%;
+
+                &::before {
+                    opacity: 0;
+                    visibility: hidden;
+                }
+
+                &::after {
+                    opacity: 0;
+                    visibility: hidden;
+                }
+
+                &>i {
+                    &::before {
+                        background: $c-6;
+                        transform: translate(0, -50%) rotate(45deg);
+                    }
+
+                    &::after {
+                        background: $c-6;
+                        transform: translate(0, -50%) rotate(-45deg);
+                    }
+                }
+            }
+        }
+    }
+}
+
+//모바일메뉴에 on ---768 
+@media (max-width:768px) {
+    .header {
+        &.mobile_on {
+            .content {
+                height: 80px;
+                background: $c-4;
+                border-bottom: none;
+            }
+
+            .header_wrap {
+                h1 {
+                    top: 20px;
+
+                    img {
+                        filter: invert(1);
+                    }
+                }
+            }
+
+            .gnb {
+                background: $c-2;
+
+                &>ul {
+                    &>li {
+                        a {
+                            color: $c-wb;
+                        }
+
+                        &:not(:first-child) {
+                            &::before {
+                                background: $c-4;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .mmenu {
+                top: 24px;
+
+
+                &::before {
+                    background: $c-gb;
+                }
+
+                &::after {
+                    background: $c-gb;
+                }
+
+                &>i {
+                    &::before {
+                        background: $c-gb;
+                    }
+
+                    &::after {
+                        background: $c-gb;
+                    }
+                }
+
+                &.on {
+                    background: $c-2;
+                }
+            }
         }
     }
 }

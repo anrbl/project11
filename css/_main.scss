@@ -1,9 +1,21 @@
+//메인비주얼 _ 슬라이드쇼 (스와이퍼사용)
 .main_visual {
     position: relative;
 
     .swiper {
         width: 100%;
         height: 100%;
+    }
+
+    .swiper-slide {
+        position: relative;
+        overflow: hidden;
+        height: 500px;
+    }
+
+    .slide-image {
+        position: absolute;
+        inset: 0 0 0 0;
     }
 
     .itm {
@@ -22,11 +34,12 @@
             background: rgba(0, 0, 0, 0.3);
             backdrop-filter: blur(5px);
         }
+
     }
 
     .itm01 {
         height: 100vh;
-        background: url(../images/mainVisual03.jpg) no-repeat left center/cover;
+        background: url(../images/mainVisual01.jpg) no-repeat left center/cover;
     }
 
     .itm02 {
@@ -36,7 +49,7 @@
 
     .itm03 {
         height: 100vh;
-        background: url(../images/mainVisual04.jpg) no-repeat left center/cover;
+        background: url(../images/mainVisual03.jpg) no-repeat left center/cover;
     }
 
     .slogan {
@@ -100,83 +113,103 @@
         }
     }
 
-    .scroll {
-        position: absolute;
-        bottom: 300px;
-        left: 80px;
-        z-index: 999;
-        user-select: none;
-
-        &::before {
-            content: "";
-            position: absolute;
-            top: -110px;
-            left: 50%;
-            transform: translate(-50%, 0);
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: $c-wb;
-
-            animation: scr 3s infinite;
-        }
-
-        @keyframes scr {
-            0% {
-                transform: translate(-50%, 0);
-                opacity: 0%;
-
-            }
-
-            70% {
-
-                transform: translate(-50%, 67px);
-                opacity: 100%;
-            }
-
-            100% {
-                transform: translate(-50%, 0);
-                opacity: 0%;
-            }
-        }
-
-        &::after {
-            content: "";
-            position: absolute;
-            top: -122px;
-            left: 50%;
-            transform: translate(-50%, 0);
-            width: 28px;
-            height: 100px;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-
-        }
-
-        span {
-            font-size: 12px;
-            font-weight: 300;
-            text-transform: uppercase;
-            color: $c-g;
-
-            writing-mode: vertical-lr;
-            letter-spacing: 5px;
-        }
-
-    }
 }
 
 @media (max-width:768px) {
     .main_visual {
         height: 500px;
+
+        .itm {
+            position: relative;
+            z-index: 990;
+
+            &::before {
+                position: absolute;
+                top: auto;
+                bottom: 0;
+                left: 0;
+                z-index: -1;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 80%);
+                backdrop-filter: blur(0);
+            }
+        }
+
+        .itm01 {
+            height: 100%;
+            background: url(../images/mainVisual01.jpg) no-repeat 75% bottom/cover;
+        }
+
+        .itm02 {
+            height: 100%;
+            background: url(../images/mainVisual02.jpg) no-repeat 75% top/cover;
+        }
+
+        .itm03 {
+            height: 100%;
+            background: url(../images/mainVisual03.jpg) no-repeat 85% top/cover;
+        }
+
+        .slogan {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translate(-50%, 0);
+            text-align: center;
+
+            h3 {
+                font-size: 40px;
+                width: auto;
+            }
+
+            p {
+                font-size: 14px;
+                line-height: 18px;
+            }
+
+            a {
+                display: inline-block;
+                padding: 10px 25px 9px 25px;
+                color: $c-w;
+                border: 1px solid rgba(255, 255, 255, 0.5);
+                border-radius: 8px;
+            }
+
+        }
+
+        .arrows {
+            left: 50%;
+            bottom: 50px;
+            transform: translate(-50%, 0);
+            width: 100%;
+
+            i {
+                padding: 5px;
+                font-size: 32px;
+                color: $c-w;
+                cursor: pointer;
+            }
+
+            .left {
+                position: absolute;
+                bottom: 0;
+                left: 15px;
+            }
+
+
+            .right {
+                position: absolute;
+                bottom: 0;
+                left: auto;
+                right: 15px;
+            }
+        }
     }
 }
 
+//뉴스 최신소식_ 할리데이비슨 미디어 (슬라이드 쇼 포함)
 .main_news {
-    .title {
-        text-align: right;
-    }
-
     .content {
         padding: 120px 0 0 0;
     }
@@ -241,6 +274,7 @@
                 strong {
                     display: block;
                     font-size: 24px;
+                    line-height: 28px;
                     font-weight: 600;
                     margin: 0 0 16px 0;
                 }
@@ -325,6 +359,99 @@
     }
 }
 
+@media (max-width:768px) {
+    .main_news {
+        padding: 100px 0;
+
+        .content {
+            padding: 0 24px;
+        }
+
+        .board {
+            display: block;
+
+            .news_left {
+
+                &>* {
+                    height: auto;
+                }
+
+                .news_box {
+                    display: block;
+                    margin: 0 0 24px 0;
+                }
+
+                .nl {
+                    display: block;
+
+                    .desc {
+                        text-align: left;
+                    }
+                }
+
+                .img_box {
+                    overflow: hidden;
+
+                    img {
+                        transition: 0s;
+                    }
+
+                    &:hover {
+                        img {
+                            transform: scale(1);
+                        }
+                    }
+                }
+
+                .desc {
+                    padding: 30px 30px 40px 30px;
+                }
+            }
+
+            .news_slide {
+                border: none;
+
+                .media_card {
+                    display: flex;
+
+                    &>* {
+                        flex: 1;
+                    }
+                }
+
+                .img_box {
+
+                    img {
+                        width: 100%;
+                        height: 250px;
+                        object-fit: cover;
+                    }
+                }
+
+                .desc {
+                    height: auto;
+
+                    p {
+                        width: 100%;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 3;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                    }
+                }
+
+                .news_arrow {
+                    bottom: 0;
+                    right: auto;
+                    left: 0;
+                }
+            }
+        }
+    }
+}
+
+
+//모토사이클 _ 제품 소개 슬라이드(스와이퍼 그리드)
 .main_motorcycle {
     position: relative;
     background: $c-wb;
@@ -336,7 +463,7 @@
         bottom: 0;
         width: 700px;
         z-index: 990;
-        background: url(../images/BG02.jpg)no-repeat fixed right top/cover;
+        background: url(../images/BG01.jpg)no-repeat fixed right top/cover;
         box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
         transition: 0.5s 0.7s;
 
@@ -357,7 +484,6 @@
                 font-size: 20px;
                 font-weight: 300;
                 margin: 0 0 8px 0;
-                text-indent: -2px;
             }
 
             h3 {
@@ -367,14 +493,6 @@
             }
         }
     }
-
-    &.active {
-        .motor_left {
-            left: 0;
-            transition: 0.5s 0.3s;
-        }
-    }
-
 
 
     .motor_slide {
@@ -444,6 +562,81 @@
     }
 }
 
+@media (max-width:768px) {
+    .main_motorcycle {
+        padding: 0 0 100px 0;
+
+        .motor_left {
+            position: relative;
+            width: 100%;
+            height: 250px;
+
+            display: flex;
+            align-items: center;
+            margin: 0 0 32px 0;
+
+            background: url(../images/BG01.jpg)no-repeat center center;
+            box-shadow: none;
+
+            &::before {
+                content: "";
+                position: absolute;
+                inset: 0 0 0 0;
+                background: rgba($color: $c-b, $alpha: 0.3);
+                backdrop-filter: blur(2px);
+            }
+
+            .tit {
+                position: static;
+                transform: translate(0, 0);
+                width: 100%;
+
+                text-align: center;
+
+                h3 {
+                    font-size: 40px;
+                    line-height: 44px;
+                    font-weight: 800;
+                }
+            }
+        }
+
+        .motor_slide {
+            position: static;
+            width: 100%;
+            height: auto;
+            padding: 0 24px;
+
+            .swiper-slide {
+                text-align: center;
+                height: 100% !important;
+            }
+
+            .product {
+                // display: flex;
+                // align-items: center;
+                // height: 250px;
+
+                figure {
+                    display: flex;
+                    justify-content: center;
+                    padding: 30px 15px 0 25px;
+                }
+            }
+
+            .txt {
+                padding: 30px 30px;
+                text-align: left;
+
+                span {
+                    display: block;
+                }
+            }
+        }
+    }
+}
+
+//콜렉션 _ 할리데이비슨몰 상품 소개 안내
 .main_collection {
 
     .content {
@@ -453,16 +646,18 @@
     .slogan {
         position: relative;
         z-index: 2;
-        height: 250px;
-        border-radius: 8px;
-        overflow: hidden;
-        background: url(../images/BG03.jpg) no-repeat left center/cover;
-        margin: 0 0 48px 0;
 
         display: flex;
         align-items: center;
         justify-content: space-between;
         padding: 0 40px;
+
+        height: 250px;
+        border-radius: 8px;
+        overflow: hidden;
+        background: url(../images/BG02.jpg) no-repeat left center/cover;
+        margin: 0 0 48px 0;
+
 
         &::before {
             content: "";
@@ -477,6 +672,16 @@
             font-weight: 600;
             line-height: 22px;
             color: $c-w;
+            width: 450px;
+            margin: 0 0 24px 0;
+        }
+
+        a {
+            display: inline-block;
+            padding: 9px 25px 8px 25px;
+            background: $c-w;
+            border-radius: 4px;
+            font-size: 16px;
         }
     }
 
@@ -503,9 +708,9 @@
                 &::before {
                     content: "120TH ANNIVERSARY";
                     display: block;
-                    margin: 0 0 8px 0;
                     font-size: 14px;
                     font-weight: 500;
+                    margin: 0 0 8px 0;
                     color: $c-sub;
                 }
 
@@ -527,7 +732,7 @@
             padding: 30px;
             background: $c-main;
 
-            a {
+            .txt {
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
@@ -546,6 +751,79 @@
             p {
                 margin: 0 0 auto 0;
                 color: $c-w;
+            }
+        }
+    }
+}
+
+@media (max-width:768px) {
+    .main_collection {
+        padding: 100px 0;
+
+        .content {
+            padding: 0 24px;
+        }
+
+        .slogan {
+            height: 200px;
+
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+
+            padding: 0 30px;
+
+            background: url(../images/BG02.jpg) no-repeat center center/cover;
+
+            &::before {
+                backdrop-filter: blur(5px);
+            }
+
+            .txt {
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 20px;
+                width: 100%;
+            }
+        }
+
+        .col_best {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 24px;
+            height: auto;
+
+            li {
+
+                .img_box {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    background: $c-w;
+                    width: 100%;
+                    height: 200px;
+                }
+
+                .desc {
+                    padding: 20px 15px;
+
+                    &::before {
+                        font-size: 12px;
+                    }
+
+                    strong {
+                        line-height: 22px;
+                    }
+                }
+            }
+
+            .more {
+                padding: 20px;
+
+                p {
+                    margin: 0 0 46px 0;
+                }
             }
         }
     }
