@@ -154,9 +154,10 @@
         .slogan {
             position: absolute;
             bottom: 50px;
-            left: 50%;
-            transform: translate(-50%, 0);
-            text-align: center;
+            left: 0;
+            transform: translate(0, 0);
+            padding: 0 50px;
+            text-align: right;
 
             h3 {
                 font-size: 40px;
@@ -180,7 +181,7 @@
 
         .arrows {
             left: 50%;
-            bottom: 50px;
+            bottom: 40px;
             transform: translate(-50%, 0);
             width: 100%;
 
@@ -201,8 +202,7 @@
             .right {
                 position: absolute;
                 bottom: 0;
-                left: auto;
-                right: 15px;
+                left: 50px;
             }
         }
     }
@@ -564,7 +564,6 @@
 
 @media (max-width:768px) {
     .main_motorcycle {
-        padding: 0 0 100px 0;
 
         .motor_left {
             position: relative;
@@ -592,6 +591,7 @@
                 width: 100%;
 
                 text-align: center;
+                padding: 0 30px;
 
                 h3 {
                     font-size: 40px;
@@ -625,7 +625,7 @@
             }
 
             .txt {
-                padding: 30px 30px;
+                padding: 30px;
                 text-align: left;
 
                 span {
@@ -677,11 +677,60 @@
         }
 
         a {
+            position: relative;
+            z-index: 5;
             display: inline-block;
-            padding: 9px 25px 8px 25px;
+            width: 80px;
+            height: 80px;
+            text-align: center;
+            line-height: 80px;
+
+            border: 2px solid $c-w;
+            border-radius: 50%;
             background: $c-w;
-            border-radius: 4px;
             font-size: 16px;
+            font-weight: 600;
+            box-shadow: 0 0 5px rgba($color: $c-b, $alpha: 0.3);
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: -1;
+
+                width: 80px;
+                height: 80px;
+                text-align: center;
+                line-height: 80px;
+                border-radius: 50%;
+                background: $c-w;
+
+                opacity: 0;
+            }
+
+            &:hover {
+                &::before {
+                    animation: beat 2s infinite;
+                }
+            }
+
+            @keyframes beat {
+                0% {
+                    transform: translate(-50%, -50%) scale(1.0);
+                }
+
+                15% {
+                    opacity: 35%;
+                    transform: translate(-50%, -50%) scale(1.0);
+                }
+
+                40% {
+                    opacity: 0%;
+                    transform: translate(-50%, -50%) scale(1.7);
+                }
+            }
         }
     }
 
@@ -784,6 +833,27 @@
                 font-weight: 400;
                 line-height: 20px;
                 width: 100%;
+            }
+
+
+            a {
+                width: auto;
+                height: auto;
+                line-height: 16px;
+                padding: 9px 25px 8px 25px;
+                border: none;
+                border-radius: 4px;
+                font-weight: 400;
+
+                &::before {
+                    display: none;
+                }
+
+                &:hover {
+                    &::before {
+                        animation: none;
+                    }
+                }
             }
         }
 

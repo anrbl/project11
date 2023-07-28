@@ -57,6 +57,7 @@ $(function () {
     // })
 
     const MainSlide = new Swiper('.main_slide', {
+
         parallax: true,
         speed: 1000,
         loop: true,
@@ -123,7 +124,7 @@ $(function () {
         $('.mmenu').removeClass('mobile_on');
         $('.gnb').removeClass('mobile_on');
     });
-    $('.gnb').on('wheel mousemove mousedown click', function (e) {
+    $('.gnb').on('wheel', function (e) {
         if ($(this).hasClass('on')) {
             e.preventDefault();
         }
